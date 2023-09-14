@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input type="" name="firstName" value="" placeholder="First Name" />
+        <input type="" name="lastName" value="" placeholder="Last Name" />
+        <input type="" name="email" value="" placeholder="email" />
+        <input type="" name="amount" value="" placeholder="amount" />
+        <input type="" name="currency" placeholder="currency" value="ETB" />
+        <button class="submit">Pay Now</button>
+    </form>
+
+    <script>
+        const submitBtn = document.querySelector(".submit");
+
+
+        submitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            fetch("http://localhost:3000/", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: "",
+            }).then(response => response.json())
+                .then(data => {
+                    window.location.replace(data);
+                })
+                .catch(error => console.error(error));
+
+        })
+    </script>
+</body>
+
+
+</html>
